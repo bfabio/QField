@@ -185,6 +185,7 @@ jobs:
 
       - name: Build
         run: |
+          cd "${{ env.CMAKE_BUILD_DIR }}"
           ctest --output-on-failure
 
       - name: Setup tmate session
