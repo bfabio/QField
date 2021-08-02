@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - vcpkg-linux
       - release-**
   pull_request:
   release:
@@ -132,8 +133,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y gperf autopoint '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev
           sudo apt-get remove -y libopenexr-dev # Avoid gdal picking this system lib up
-#          echo "CMAKE_EXTRA_CXX_STANDARD_LIBRARIES=${Qt5_DIR}/lib/libQt5DBus.so /home/runner/builddir/vcpkg_installed/x64-linux/lib/libpgcommon.a /home/runner/builddir/vcpkg_installed/x64-linux/lib/libpgport.a /home/runner/builddir/vcpkg_installed/x64-linux/lib/libwebp.a" >> $GITHUB_ENV
-          # Required for unit tests
+          # echo "CMAKE_EXTRA_CXX_STANDARD_LIBRARIES=${Qt5_DIR}/lib/libQt5DBus.so /home/runner/builddir/vcpkg_installed/x64-linux/lib/libpgcommon.a /home/runner/builddir/vcpkg_installed/x64-linux/lib/libpgport.a /home/runner/builddir/vcpkg_installed/x64-linux/lib/libwebp.a" >> $GITHUB_ENV
+          # Required to run unit tests on linux
           echo "QT_QPA_PLATFORM=offscreen" >> $GITHUB_ENV
 
       - name: Install dependencies and generate project files
