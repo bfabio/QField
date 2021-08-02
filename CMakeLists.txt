@@ -201,7 +201,7 @@ if(VCPKG)
     file(GLOB PROVIDER_LIBS
       "${QGIS_PLUGIN_DIR}/*provider.dll"
     )
-  if(UNIX)
+  else()
     file(GLOB PROVIDER_LIBS
       "${QGIS_PLUGIN_DIR}/*provider.so"
     )
