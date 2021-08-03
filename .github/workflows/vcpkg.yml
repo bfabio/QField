@@ -183,8 +183,9 @@ jobs:
         run: |
           cmake --build "${{ env.CMAKE_BUILD_DIR }}" # --target qfield
 
-      - name: Build
+      - name: Test
         run: |
+          pip install pytest
           cd "${{ env.CMAKE_BUILD_DIR }}"
           ctest --output-on-failure
 
